@@ -11,7 +11,6 @@ def load_data(input_file):
 
 def create_key(df, n):
     """Cree una nueva columna en el DataFrame que contenga el key de la columna 'text'"""
-
     df = df.copy()
     df["key"] = df["text"]
     df["key"] = df["key"].str.strip()
@@ -24,7 +23,6 @@ def create_key(df, n):
     df["key"] = df["key"].str.join("")
     df["key"] = df["key"].map(lambda x: [x[t : t + n - 1] for t in range(len(x))])
     df["key"] = df["key"].apply(lambda x: sorted(set(x)))
-
     df["key"] = df["key"].str.join("")
 
     return df
